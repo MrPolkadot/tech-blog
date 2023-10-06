@@ -2,7 +2,7 @@ const path = require("path");
 const express = require("express");
 const expbs = require("express-handlebars");
 const session = require("express-session");
-//const routes = require("./controllers");
+const routes = require("./controllers");
 const helpers = require("./utils/helpers")//add helper file after
 const hbs = expbs.create({ helpers });
 const app = express();
@@ -36,7 +36,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "dist")));
 
-//app.use(routes);
+app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Listening at port ${PORT}`));
