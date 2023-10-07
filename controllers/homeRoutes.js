@@ -16,23 +16,32 @@ router.get("/", async (req, res) => {
     }
 });
 
+
+
 router.get("/signup", async (req, res) => {
     try {
-        res.render("signup");
+        await res.render("signup");
     } catch (error) {
         res.status(500).json(error);
     }
 });
 
-// router.get("/profile", withAuth, async (req, res) => {
-//     const id = req.session.user_id;
+router.get("/profile", withAuth, async (req, res) => {
+    //const id = req.session.user_id;
 
-//     try {
+    try {
+        await res.render("profile");
+    } catch (error) {
+        res.status(500).json(err);
+    }
+})
 
-//     } catch (error) {
-
-//     }
-
-// })
+router.get("/login", (req, res) => {
+    if (req.session.logged_in) {
+        res.redirect("/profile");
+        return;
+    }
+    res.render("login");
+});
 
 module.exports = router;
