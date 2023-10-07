@@ -27,10 +27,10 @@ router.get("/signup", async (req, res) => {
 });
 
 router.get("/profile", withAuth, async (req, res) => {
-    //const id = req.session.user_id;
+    const id = req.session.user_id;
 
     try {
-        await res.render("profile");
+        await res.render("profile", { logged_in: true });
     } catch (error) {
         res.status(500).json(err);
     }

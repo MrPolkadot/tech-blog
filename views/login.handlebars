@@ -1,8 +1,51 @@
-<section class="bg-blue-200">
-  <div class="flex items-center justify-center">
-    <div class="bg-white rounded shadow-md w-72">
+<section class="min-h-screen flex items-center justify-center ">
+  
+    <div class="bg-white p-8 rounded shadow-md w-96">
       <h2 class="text-2xl font-bold mb-4">Login</h2>
+      <form class="login-form">
+        <div class="mb-4">
+          <label
+            for="email"
+            class="block text-gray-600 text-sm font-medium"
+          >Email</label>
+          <input
+            type="text"
+            placeholder="Enter email"
+            id="email-login"
+            name="email"
+            class="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:border-blue-600"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="email"
+            class="block text-gray-600 text-sm font-medium"
+          >Password</label>
+          <input
+            type="password"
+            placeholder="Enter password"
+            id="password-login"
+            name="password"
+            class="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:border-blue-600"
+          />
+        </div>
+
+        <div class="mb-6">
+          <button
+            type="submit"
+            class="bg-blue-400 text-white w-full py-2 px-4 rounded hover:bg-blue-600 transition duration-300"
+          >Login</button>
+        </div>
+
+      </form>
+      <p class="text-gray-600 text-sm text-center">Don't have an account?
+        <a href="/signup" class="text-blue-500">Sign up</a>
+      </p>
+
     </div>
 
   </div>
 </section>
+
+<script src="./js/login.js"></script>

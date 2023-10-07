@@ -7,11 +7,15 @@
     <script src="https://kit.fontawesome.com/cb27765f85.js" crossorigin="anonymous"></script>
     <title>Tech Blog</title>
   </head>
-  <body class="min-h-screen">
+  <body class="min-h-screen bg-gradient-to-r from-teal-200 to-teal-500">
 
-    {{>header}}
+    {{> header}}
 
     {{{body}}}
 
   </body>
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  
+  {{/if}}
 </html>
