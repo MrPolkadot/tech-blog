@@ -15,6 +15,10 @@ BlogPosts.init(
             type: DataTypes.STRING,
             allowNull: false
         },
+        blog_content: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         blog_date: {
             type: DataTypes.DATEONLY,
             allowNull: false
@@ -25,13 +29,6 @@ BlogPosts.init(
                 model: "user",
                 key: "id",
             }
-        },
-        comment_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: "comments",
-                key: "id"
-            },
         },
     },
     {

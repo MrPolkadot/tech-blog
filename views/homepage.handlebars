@@ -1,6 +1,24 @@
-<main class="bg-gray-300 mt-6">
-  <section>
-    <h2>Welcome</h2>
-    <p>hello world</p>
+<main class="mt-7 flex items-center justify-center">
+    {{#each allPosts as |post|}}
+      <section class="flex items-center justify-center ">
+        <div class="bg-white rounded shadow-md border-2 border-lime-200 w-96">
+          <div
+            class="bg-blue-200 p-4 flex items-center justify-between rounded-t w-full"
+          >
+            <h2 class="text-gray-700">{{blog_title}}</h2>
+            <div class="text-sm flex gap-2 text-gray-400">
+              <p>{{user.name}}</p>
+              <p>{{blog_date}}</p>
+            </div>
+            
+          </div>
+          <div class="p-4">
+            <p>{{blog_content}}</p>
+          </div>
+        </div>
+      </section>
+
+    {{/each}}
+
   </section>
 </main>
