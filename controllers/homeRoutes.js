@@ -11,7 +11,8 @@ router.get("/", async (req, res) => {
                 "id",
                 "blog_title",
                 "blog_content",
-                
+                "blog_date"
+
             ],
             include: [{
                 model: Comments,
@@ -32,7 +33,7 @@ router.get("/", async (req, res) => {
 
 
         const allPosts = posts.map(post => post.get({ plain: true }))
-        res.render("homepage", { allPosts, logged_in: req.session.logged_in })
+        res.render("homepage", { allPosts, logged_in: req.session.logged_in, logged_in: true })
     } catch (error) {
         res.status(500).json(error);
     }
@@ -53,18 +54,46 @@ router.get("/profile", withAuth, async (req, res) => {
     const id = req.session.user_id;
 
     try {
-        const userData = await User.findByPk(id, {
-            include: [
-                { model: BlogPosts },
-                { model: Comments },
-            ]
+        const userData = await BlogPosts.findAll({
+            include: [{ model: Comments }, { model: User }],
+            where: {
+                user_id: id
+            },
+            // attributes: [
+            //     "id",
+            //     "blog_title",
+            //     "blog_content",
+            //     "blog_date"
+            // ],
+            // include: [
+
+            //     {
+            //         model: Comments,
+            //         attrributes: [
+            //             "id",
+            //             "comment_body",
+            //             "user_id",
+            //             "blog_id"
+            //         ],
+
+            //         include: {
+            //             model: User,
+            //             attributes: ["name"]
+            //         }
+            //     },
+            //     {
+            //         model: User,
+            //         attributes: ["name"]
+            //     }
+            // ],
+
         });
 
-        const user = userData.get({ plain: true });
-
+        const user = userData.map((data => data.get({ plain: true })));
+        console.log(user)
         res.render("profile", { user, logged_in: true });
     } catch (error) {
-        res.status(500).json(err);
+        res.status(500).json(error);
     }
 });
 
@@ -77,9 +106,9 @@ router.get("/blog-post", withAuth, async (req, res) => {
             include: [{ model: BlogPosts }]
         });
         const posts = postData.get({ plain: true });
-
-        res.render("userPosts", { posts, logged_in: true });
         console.log(posts);
+        res.render("userPosts", { posts, logged_in: true });
+
     } catch (error) {
         res.status(500).json(error);
     }

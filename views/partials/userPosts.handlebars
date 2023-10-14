@@ -1,3 +1,5 @@
+{{#each user}}
+
 <section class="flex flex-col items-center justify-center ">
 
  
@@ -6,24 +8,24 @@
           <div
             class="bg-blue-200 p-4 flex items-center justify-between rounded-t w-full"
           >
-            <h2 class="text-gray-700">Blog_title{{blog_title}}</h2>
+            <h2 class="text-gray-800">{{blog_title}}</h2>
             <div class="text-sm flex gap-2 text-gray-400">
               <p>{{user.name}}</p>
-              <p>blog_date{{blog_date}}</p>
+              <p>{{blog_date}}</p>
             </div>
             
           </div>
-          <div class="p-4">
-            <p>hello</p>
+          <div class="text-gray-500 p-4">
             <p>{{blog_content}}</p>
           </div>
         </div>
+      
       </section>
+        {{/each}}
 
     
-  <button id="postBtn" class="bg-green-300 hover:bg-green-400 rounded p-3"><a href="/api/blog-post/new">Add New Post</a></button>
+  <button class="bg-green-300 hover:bg-green-400 rounded p-3"><a href="/api/blog-post/new">Add New Post</a></button>
   </section>
 </section>
 
 
-{{!-- <script src="./js/addPostBtn.js"></script> --}}

@@ -1,5 +1,6 @@
+ {{#each allPosts as |post|}}
 <main class="mt-7 flex items-center justify-center">
-    {{#each allPosts as |post|}}
+   
       <section class="flex items-center justify-center ">
         <div class="bg-white rounded shadow-md border-2 border-lime-200 w-96">
           <div
@@ -15,10 +16,18 @@
           <div class="p-4">
             <p>{{blog_content}}</p>
           </div>
+          {{#if logged_in}}
+          <div class=" text-sm bg-gray-300 hover:bg-slate-400 w-24 ml-4 rounded p-2 text-center mb-2">
+            <button>Comment</button>
+          </div>
+          {{/if}}
         </div>
       </section>
 
-    {{/each}}
+   
 
   </section>
 </main>
+ {{/each}}
+
+
